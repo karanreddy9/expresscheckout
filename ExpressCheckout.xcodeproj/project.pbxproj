@@ -28,7 +28,6 @@
 		F782A24227169DC200E2B2FD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F782A24127169DC200E2B2FD /* HomeViewController.swift */; };
 		F782A244271747DA00E2B2FD /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F782A243271747DA00E2B2FD /* ScanViewController.swift */; };
 		F782A24627174A2700E2B2FD /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F782A24527174A2700E2B2FD /* DetailsViewController.swift */; };
-		F7C2FA4E2729FC8000D4ACA2 /* ItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C2FA4D2729FC8000D4ACA2 /* ItemDetailsViewController.swift */; };
 		FB70832A97F48FAFCBEF6E1B /* Pods_ExpressCheckout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E63E60F5AD93F9C438AF4D5 /* Pods_ExpressCheckout.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,7 +58,6 @@
 		F782A24127169DC200E2B2FD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		F782A243271747DA00E2B2FD /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		F782A24527174A2700E2B2FD /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
-		F7C2FA4D2729FC8000D4ACA2 /* ItemDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,7 +117,6 @@
 				F77A6069271E32AE0000D61F /* HomePageViewController.swift */,
 				F77A606B271E32C30000D61F /* AccountViewController.swift */,
 				F77A606F271E36F60000D61F /* TabBarViewController.swift */,
-				F7C2FA4D2729FC8000D4ACA2 /* ItemDetailsViewController.swift */,
 				3F334168272C66E20029373C /* StoreTableViewCell.swift */,
 				3F33416A272F81500029373C /* ItemTableViewCell.swift */,
 				A5AA3EC82755582300C6AF9E /* CheckOutViewController.swift */,
@@ -284,7 +281,6 @@
 				F782A24627174A2700E2B2FD /* DetailsViewController.swift in Sources */,
 				F77A606C271E32C30000D61F /* AccountViewController.swift in Sources */,
 				3F9438E027127E28004FF3E9 /* SceneDelegate.swift in Sources */,
-				F7C2FA4E2729FC8000D4ACA2 /* ItemDetailsViewController.swift in Sources */,
 				A5AA3EC92755582300C6AF9E /* CheckOutViewController.swift in Sources */,
 				F782A244271747DA00E2B2FD /* ScanViewController.swift in Sources */,
 				3F9439002717E9BC004FF3E9 /* Constants.swift in Sources */,

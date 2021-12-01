@@ -31,18 +31,6 @@ class ScanViewController: UIViewController, AVCaptureMetadataOutputObjectsDelega
 
         // Do any additional setup after loading the view.
         // Do any additional setup after loading the view, typically from a nib.
-//        navigationItem.title = "Scanner"
-//        view.backgroundColor = .white
-        
-//        scannedCodenew = "8901030599170"
-//
-//        fetchItemDetails(scannedCode: scannedCodenew!)
-        
-//        print("dismissing scan")
-//
-//        dismissScreen()
-//
-//        print("scan dismissed")
         
         captureDevice = AVCaptureDevice.default(for: .video)
         // Check if captureDevice returns a value and unwrap it
@@ -82,11 +70,6 @@ class ScanViewController: UIViewController, AVCaptureMetadataOutputObjectsDelega
         
     }
     
-//    func dismissScreen() {
-//        let scanVC = ScanViewController()
-//        scanVC.dismiss(animated: true, completion: {self.dismiss(animated: true, completion: nil)})
-//    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -122,36 +105,12 @@ class ScanViewController: UIViewController, AVCaptureMetadataOutputObjectsDelega
         
         view.addSubview(codeFrame)
         
-        guard let barcodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObject) else { return }
-        codeFrame.frame = barcodeObject.bounds
-        codeLabel.text = stringCodeValue
-        
-        // Play system sound with custom mp3 file
-        if let customSoundUrl = Bundle.main.url(forResource: "beep-07", withExtension: "mp3") {
-            var customSoundId: SystemSoundID = 0
-            AudioServicesCreateSystemSoundID(customSoundUrl as CFURL, &customSoundId)
-            //let systemSoundId: SystemSoundID = 1016  // to play apple's built in sound, no need for upper 3 lines
-            
-            AudioServicesAddSystemSoundCompletion(customSoundId, nil, nil, { (customSoundId, _) -> Void in
-                AudioServicesDisposeSystemSoundID(customSoundId)
-            }, nil)
-            
-            AudioServicesPlaySystemSound(customSoundId)
-        }
-        
         // Stop capturing and hence stop executing metadataOutput function over and over again
         captureSession?.stopRunning()
         
         // Call the function which performs navigation and pass the code string value we just detected
         scannedCodenew = stringCodeValue
-        
-        
-//        scannedCodenew = "8901030599170"
-        
         fetchItemDetails(scannedCode: scannedCodenew!)
-        
-//        displayDetailsViewController(scannedCode: stringCodeValue)
-        
     }
     
     func fetchItemDetails(scannedCode: String) {
@@ -176,33 +135,5 @@ class ScanViewController: UIViewController, AVCaptureMetadataOutputObjectsDelega
                 print("Error fetching user details")
             }
         }
-//        print("item details", itemName, itemPrice)
-//        return (itemName, itemPrice)
     }
-    
-    func displayDetailsViewController(scannedCode: String) {
-        /*let detailsViewController = DetailsViewController()
-        detailsViewController.scannedCode = scannedCode
-        //navigationController?.pushViewController(detailsViewController, animated: true)
-        present(detailsViewController, animated: true, completion: nil)*/
-        
-        
-        let detailsViewController = ItemDetailsViewController()
-        detailsViewController.scannedCode = scannedCode
-        //self.dismiss(animated: true, completion: nil)
-        //navigationController?.pushViewController(detailsViewController, animated: true)
-        performSegue(withIdentifier: "scanToItemDetailsSegue", sender: self)
-        /*
-        
-        present(detailsViewController, animated: true, completion: nil)*/
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "scanToItemDetailsSegue" {
-            let itemDetailsSeg = segue.destination as! ItemDetailsViewController
-            itemDetailsSeg.scannedCode = self.scannedCodenew
-            itemDetailsSeg.storeName = self.storeName
-        }
-    }
-
 }
