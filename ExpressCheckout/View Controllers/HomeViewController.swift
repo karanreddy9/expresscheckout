@@ -28,6 +28,13 @@ class HomeViewController: UIViewController, InsertItemDetails {
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var itemTableView: UITableView!
     
+    var orderId: String?
+    var orderCount: Int?
+    var subTotal: Double?
+    var tax: Double?
+    var total: Double?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //var us1 = usnm
@@ -59,13 +66,36 @@ class HomeViewController: UIViewController, InsertItemDetails {
         }
         
         if segue.identifier == "checkOutSeque" {
+            prepareOrder()
             let checkoutSeg = segue.destination as! CheckOutViewController
             checkoutSeg.storeImg = storeImage.image
             checkoutSeg.storeName = welcomeLabel.text
+            
+            
         }
     }
     
-    @IBAction func stepperButton(_ sender: UIStepper) {
+    func prepareOrder() {
+        var c = 0
+        var subt:Double = 0
+        var number = String()
+            for _ in 1...6 {
+               number += "\(Int.random(in: 1...9))"
+            }
+            orderId = number
+
+        for i in info {
+            c = c + i.quantity
+            subt += i.price
+        }
+        orderCount = c
+        subTotal = round(Double((100 * subt) / 100))
+        tax = subt*0.08
+        
+        total = Double(subTotal!) + Double(tax!)
+    }
+    
+     func stepperButton(_ sender: UIStepper) {
         let point = sender.convert(CGPoint.zero, to: itemTableView)
         guard let indexpath = itemTableView.indexPathForRow(at: point) else {return}
         
