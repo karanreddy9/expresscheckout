@@ -53,13 +53,19 @@ class OrderHistoryTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("fetching orders")
-        fetchOrders()
+//        fetchOrders()
         print("orders fetched")
        
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        fetchOrders()
+    }
+    
     func fetchOrders() {
         let uid = Auth.auth().currentUser?.uid
+        
+        self.info = []
         
         db.collection("users").document(uid!).collection("orders").getDocuments() { (querySnapshot, err) in
             if let err = err {
@@ -73,6 +79,8 @@ class OrderHistoryTableViewController: UITableViewController {
                     let odate = data["orderDate"] as? String ?? ""
                     let ototal = data["orderTotal"] as? Double ?? 0.00
                     let ostore = data["orderStore"] as? String ?? ""
+                    
+                   
                     
                     self.info.insert(OrderInfo(orderid: oid, orderdate: odate, orderstore: ostore, ordertotal: ototal), at: 0)
                 }
