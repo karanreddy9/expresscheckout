@@ -63,6 +63,8 @@ class AccountViewController: UIViewController {
                 let zipcode = data?["zipcode"] as? String ?? ""
                 
                 
+                
+                
                 self.firstNameLabel.text = firstName + " " + lastName
                 self.emailLabel.text = email
                 self.mblnoLabel.text = phnno
@@ -77,13 +79,26 @@ class AccountViewController: UIViewController {
                     self.addressTitle.alpha = 0
                 }
                 
+                if(self.firstNameLabel.text != "")
+                {
+                    self.firstNameLabel.alpha = 1
+                    self.nameTitle.alpha = 1
+                    
+                }
+                if(self.emailLabel.text != ""){
+                    self.emailLabel.alpha = 1
+                    self.emailTitle.alpha = 1
+                }
                 
-                self.firstNameLabel.alpha = 1
-                self.emailLabel.alpha = 1
-                self.mblnoLabel.alpha = 1
-                self.nameTitle.alpha = 1
-                self.emailTitle.alpha = 1
-                self.mblnoTitle.alpha = 1
+                if(self.mblnoLabel.text != ""){
+                    self.mblnoLabel.alpha = 1
+                    self.mblnoTitle.alpha = 1
+                    
+                }
+                
+                
+               
+                
                 
             } else {
                 print("Error fetching user details")
