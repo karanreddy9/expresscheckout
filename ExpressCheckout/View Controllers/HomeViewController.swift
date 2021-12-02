@@ -45,6 +45,10 @@ class HomeViewController: UIViewController, InsertItemDetails {
         itemTableView.dataSource = self
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        print("hmvc appeared")
+    }
+    
     @IBAction func scanButton(_ sender: Any) {
         performSegue(withIdentifier: "scanButtonSegue", sender: self)
     }
@@ -71,7 +75,15 @@ class HomeViewController: UIViewController, InsertItemDetails {
             checkoutSeg.storeImg = storeImage.image
             checkoutSeg.storeName = welcomeLabel.text
             
+            checkoutSeg.oId = orderId
+            checkoutSeg.itemsCount = orderCount
+            checkoutSeg.subT = subTotal
+            checkoutSeg.orderTax = tax
+            checkoutSeg.orderTotal = total
             
+            for i in info {
+                checkoutSeg.itemsInfo.insert(CheckOutViewController.ItemsInfo(itemName: i.itemName, quantity: i.quantity, price: i.price, description: i.description), at: 0)
+            }
         }
     }
     
@@ -86,16 +98,16 @@ class HomeViewController: UIViewController, InsertItemDetails {
 
         for i in info {
             c = c + i.quantity
-            subt += i.price
+            subt += round(i.price*Double(i.quantity)*100)/100
         }
         orderCount = c
-        subTotal = round(Double((100 * subt) / 100))
-        tax = subt*0.08
+        subTotal = subt
+        tax = round((subt*0.08)*100)/100
         
         total = Double(subTotal!) + Double(tax!)
     }
     
-     func stepperButton(_ sender: UIStepper) {
+    @IBAction func stepperButton(_ sender: UIStepper) {
         let point = sender.convert(CGPoint.zero, to: itemTableView)
         guard let indexpath = itemTableView.indexPathForRow(at: point) else {return}
         
