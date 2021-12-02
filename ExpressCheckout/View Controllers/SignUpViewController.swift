@@ -65,7 +65,7 @@ class SignUpViewController: UIViewController {
                 } else {
                     let db = Firestore.firestore()
                     
-                    db.collection("users").document(result!.user.uid).setData(["uid": result!.user.uid, "firstName": firstName, "lastName": lastName, "email": email]) { (err) in
+                    db.collection("users").document(result!.user.uid).setData(["uid": result!.user.uid, "firstName": firstName, "lastName": lastName, "email": email, "addressLine1": "", "city": "", "state": "", "zipcode": "" ]) { (err) in
                         if err != nil{
                             self.showError("User cannot be created")
                         } else {

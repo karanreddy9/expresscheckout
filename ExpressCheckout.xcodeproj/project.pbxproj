@@ -28,6 +28,7 @@
 		F782A24227169DC200E2B2FD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F782A24127169DC200E2B2FD /* HomeViewController.swift */; };
 		F782A244271747DA00E2B2FD /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F782A243271747DA00E2B2FD /* ScanViewController.swift */; };
 		F782A24627174A2700E2B2FD /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F782A24527174A2700E2B2FD /* DetailsViewController.swift */; };
+		F7903AAA275820A300BAA5D4 /* AccountUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7903AA9275820A300BAA5D4 /* AccountUpdateViewController.swift */; };
 		FB70832A97F48FAFCBEF6E1B /* Pods_ExpressCheckout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E63E60F5AD93F9C438AF4D5 /* Pods_ExpressCheckout.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		F782A24127169DC200E2B2FD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		F782A243271747DA00E2B2FD /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		F782A24527174A2700E2B2FD /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		F7903AA9275820A300BAA5D4 /* AccountUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountUpdateViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				A5F505822757D53F00CF60CC /* OrderHistoryTableViewController.swift */,
 				A5F505842757DC8B00CF60CC /* OrderHistoryItemsViewController.swift */,
 				A5F505862757DCB200CF60CC /* OrderHistoryItemTableViewCell.swift */,
+				F7903AA9275820A300BAA5D4 /* AccountUpdateViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				A5F505872757DCB200CF60CC /* OrderHistoryItemTableViewCell.swift in Sources */,
 				F782A24227169DC200E2B2FD /* HomeViewController.swift in Sources */,
 				3F33416B272F81500029373C /* ItemTableViewCell.swift in Sources */,
+				F7903AAA275820A300BAA5D4 /* AccountUpdateViewController.swift in Sources */,
 				F782A24627174A2700E2B2FD /* DetailsViewController.swift in Sources */,
 				F77A606C271E32C30000D61F /* AccountViewController.swift in Sources */,
 				3F9438E027127E28004FF3E9 /* SceneDelegate.swift in Sources */,
