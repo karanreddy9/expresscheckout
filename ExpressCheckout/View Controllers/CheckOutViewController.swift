@@ -45,9 +45,9 @@ class CheckOutViewController: UIViewController {
         
         orderId.text = oId
         noOfItems.text = String(itemsCount!)
-        subTotal.text = String(subT!)
-        tax.text = String(orderTax!)
-        total.text = String(orderTotal!)
+        subTotal.text = "$"+String(subT!)
+        tax.text = "$"+String(orderTax!)
+        total.text = "$"+String(orderTotal!)
         
         print("Checkout Details")
         print("\(oId) \(itemsCount) \(subT) \(orderTax) \(orderTotal)")
@@ -77,6 +77,28 @@ class CheckOutViewController: UIViewController {
                     db.collection("users").document(uid!).collection("orders").document(self.oId!).collection("orderItems").document().setData(["itemName": i.itemName, "itemPrice": i.price, "itemQty": i.quantity])
                 }
                 print("Order successfully inserted")
+                
+                let alert = UIAlertController(title: "Payment Successful", message: "Your payment has been received", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { _ in
+                    self.dismiss(animated: true, completion: {
+                        
+                        guard let viewControllers = self.navigationController?.viewControllers else {
+                                    return
+                                }
+                        for firstViewController in viewControllers {
+                            if firstViewController is HomePageViewController {
+                                self.navigationController?.popToViewController(firstViewController, animated: true)
+                                break
+                            }
+                        }
+                    })
+                }))
+                self.present(alert, animated: true, completion: nil)
+                
+                
+                
+                
+                
             }
         }
     }

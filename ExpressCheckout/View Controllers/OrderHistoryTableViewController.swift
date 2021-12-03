@@ -67,7 +67,7 @@ class OrderHistoryTableViewController: UITableViewController {
         
         self.info = []
         
-        db.collection("users").document(uid!).collection("orders").getDocuments() { (querySnapshot, err) in
+        db.collection("users").document(uid!).collection("orders").order(by: "orderDate", descending: true).getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -121,7 +121,7 @@ class OrderHistoryTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        150
+        100
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -138,7 +138,7 @@ class OrderHistoryTableViewController: UITableViewController {
         cellImage.image = UIImage(named: self.info[indexPath.row].orderstore)
         cellLabel.text = self.info[indexPath.row].orderstore
         cellDate.text = self.info[indexPath.row].orderdate
-        cellPrice.text = String(self.info[indexPath.row].ordertotal)
+        cellPrice.text = "$" + String(self.info[indexPath.row].ordertotal)
         
         return cell
     }

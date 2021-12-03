@@ -60,10 +60,10 @@ class OrderHistoryItemsViewController: UIViewController {
         //print(self.selectedOrder.orderid)
         fetchItems(oid: selectedOrder.orderid)
         print("items fetched")
-        self.itemSubtotal.text = "$" + String(selectedOrder.ordertotal)
+        self.itemSubtotal.text = "$" + String(round(Double(selectedOrder.ordertotal))*100/100)
         self.tax1 = (selectedOrder.ordertotal*8.25)/100
-        self.tax.text = "$" + (String(tax1))
-        self.total.text = "$" + String(selectedOrder.ordertotal + self.tax1)
+        self.tax.text = "$" + (String(round(Double(self.tax1))*100/100))
+        self.total.text = "$" + String(round(Double(selectedOrder.ordertotal + self.tax1))*100/100)
     }
     
 
@@ -119,10 +119,10 @@ extension OrderHistoryItemsViewController: UITableViewDelegate, UITableViewDataS
         let qtyCellLabel = itemcell.viewWithTag(12) as! UILabel
         let priceCellLabel = itemcell.viewWithTag(13) as! UILabel
         
-        itemCellImage.image = UIImage(named: self.stores[indexPath.row])
+        itemCellImage.image = UIImage(named: self.itemInfo[indexPath.row].itemName)
         itemNameCellLabel.text = self.itemInfo[indexPath.row].itemName
-        qtyCellLabel.text = String(self.itemInfo[indexPath.row].itemQty)
-        priceCellLabel.text = "$\(String(self.itemInfo[indexPath.row].itemPrice * Double(self.itemInfo[indexPath.row].itemQty)))"
+        qtyCellLabel.text = "Qty:"+String(self.itemInfo[indexPath.row].itemQty)
+        priceCellLabel.text = "$\(String(round(Double(self.itemInfo[indexPath.row].itemPrice * Double(self.itemInfo[indexPath.row].itemQty)))*100/100))"
         //self.subtotal = self.subtotal + (self.itemInfo[indexPath.row].itemPrice * Double(self.itemInfo[indexPath.row].itemQty))
         print("OrderHistorytblview")
         

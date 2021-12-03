@@ -98,11 +98,11 @@ class HomeViewController: UIViewController, InsertItemDetails {
 
         for i in info {
             c = c + i.quantity
-            subt += round(i.price*Double(i.quantity)*100)/100
+            subt += round(Double(i.price*Double(i.quantity))*100)/100
         }
         orderCount = c
-        subTotal = subt
-        tax = round((subt*0.08)*100)/100
+        subTotal = round(Double((subt))*100/100)
+        tax = round((subt*0.0825)*100)/100
         
         total = Double(subTotal!) + Double(tax!)
     }
@@ -116,11 +116,11 @@ class HomeViewController: UIViewController, InsertItemDetails {
         info[indexpath.row].quantity = Int(Int(sender.value).description)!
         
         let cellItemQty = cell.viewWithTag(4) as! UILabel
-        cellItemQty.text = String(info[indexpath.row].quantity)
+        cellItemQty.text = "Qty:"+String(info[indexpath.row].quantity)
         
         let pr = round((self.info[indexpath.row].price)*(Double(info[indexpath.row].quantity))*100) / 100.0
         let cellItemPrice = cell.viewWithTag(3) as! UILabel
-        cellItemPrice.text = String(pr)
+        cellItemPrice.text = "$" + String(pr)
     }
     
     @IBAction func removeButton(_ sender: UIButton) {
@@ -163,6 +163,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! ItemTableViewCell
 
+        let cellImage = cell.viewWithTag(10) as! UIImageView
+        cellImage.image = UIImage(named: String(self.info[indexPath.row].itemName))
+        //cellImage.image = UIImage(named: "trolley")
+        
         // Configure the cell...
         let cellItemName = cell.viewWithTag(1) as! UILabel
         cellItemName.text = self.info[indexPath.row].itemName
@@ -171,10 +175,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         cellItemDesc.text = self.info[indexPath.row].description
         
         let cellItemPrice = cell.viewWithTag(3) as! UILabel
-        cellItemPrice.text = String(self.info[indexPath.row].price)
+        cellItemPrice.text = "$" + String(self.info[indexPath.row].price)
         
         let cellItemQty = cell.viewWithTag(4) as! UILabel
-        cellItemQty.text = String(self.info[indexPath.row].quantity)
+        cellItemQty.text = "Qty: "+String(self.info[indexPath.row].quantity)
         
 //        let cellStepper = cell.viewWithTag(5) as! UIStepper
 //        cellStepper.stepValue = 1

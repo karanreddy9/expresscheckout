@@ -11,7 +11,7 @@ class HomePageViewController: UIViewController {
 
     @IBOutlet weak var storeTableView: UITableView!
     
-    let stores = [ "Kroger", "Target", "Walmart", "Costco", "Aldi", "Fiesta", "Sprouts Farmers Market", "Whole Foods", "H-E-B", "Sam's Club", "Randalls"]
+    let stores = [ "Kroger", "Target", "Walmart", "Costco", "Aldi", "Fiesta", "Sprouts Market", "Whole Foods", "H-E-B", "Sam's Club", "Randalls"]
     var selectedStoreName: String?
     var selectedStoreImage: UIImage?
     

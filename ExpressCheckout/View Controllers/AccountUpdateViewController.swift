@@ -24,6 +24,8 @@ class AccountUpdateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleScreenTap(sender:)))
+                   self.view.addGestureRecognizer(tap)
 
         // Do any additional setup after loading the view.
     }
@@ -35,7 +37,10 @@ class AccountUpdateViewController: UIViewController {
         }))
         self.present(alert, animated: true, completion: nil)
     }
-    
+    @objc func handleScreenTap(sender: UITapGestureRecognizer) {
+            self.view.endEditing(true)
+
+        }
     
     @IBAction func updateData(_ sender: Any) {
         if(firstNameValue.text == "")
